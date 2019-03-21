@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ItemEstoque {
-    List<Ingrediente> itensEstoque = new ArrayList<>();
+    ArrayList<Ingrediente> itensEstoque = new ArrayList<>();
 
-    public List<Ingrediente> criaItensEstoque() {
+    public ArrayList<Ingrediente> criaItensEstoque() {
 
         Ingrediente poCafe = new Ingrediente(1, "Pó de Café", 5);
         itensEstoque.add(poCafe);
@@ -27,27 +28,26 @@ public class ItemEstoque {
         return itensEstoque;
     }
 
-//    public int selecionarItemParaAdicionar(int itemQueSeraAdicionado) {
-//
-//        for (int i = 0; i < itensEstoque.size(); i++) {
-//
-//            Ingrediente ingrediente = itensEstoque.get(i);
-//
-//            if(ingrediente.codigoIngrediente == itemQueSeraAdicionado){
-//                return ingrediente.codigoIngrediente;
-//            }
-//
-//        }
-//
-//
-//        return itemQueSeraAdicionado;
-//    }
+
+    public Ingrediente selecionarItemParaAdicionar(int itemQueSeraAdicionado) {
+        ArrayList<Ingrediente> itens = criaItensEstoque();
+
+
+        for (int i = 0; i < itens.size(); i++) {
+
+            if(itemQueSeraAdicionado == itens.get(i).codigoIngrediente){
+                return itens.get(i);
+            }
+        }
+        return itensEstoque.get(0);
+    }
+
 
 //    public int totalItemEstoque(Ingrediente ingrediente) {
 //        boolean retirada = false;
 //        boolean entrada = false;
 //        int valorRetirado = 0;
-//        int valorAcrescentado = 0;
+//
 //
 //        if (retirada == true) {
 //            ingrediente.porcaoIngrediente = ingrediente.porcaoIngrediente - valorRetirado;
@@ -57,4 +57,5 @@ public class ItemEstoque {
 //
 //        return ingrediente.porcaoIngrediente;
 //    }
+//
 }

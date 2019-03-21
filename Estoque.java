@@ -8,14 +8,14 @@ public class Estoque {
     ItemEstoque itemEstoque = new ItemEstoque();
 
 
-    private List<Ingrediente> geraEstoque() {
+    private ArrayList<Ingrediente> geraEstoque() {
 
 
         return itemEstoque.criaItensEstoque();
     }
 
     public void mostraEstoque() {
-        List<Ingrediente> listaEstoque = new ArrayList<>();
+        ArrayList<Ingrediente> listaEstoque = new ArrayList<>();
         listaEstoque = geraEstoque();
 
         listaEstoque.forEach(ingrediente -> {
@@ -37,27 +37,36 @@ public class Estoque {
 
     int itemQueSeraAdicionado;
     int adicionarItem = 0;
-    int itemEscolhido;
+    Ingrediente itemEscolhido;
 
 
     public void adicionarEstoque() {
-        ItemEstoque itemEstoque = new ItemEstoque();
 
         if (desejaAlterar == 1) {
             System.out.println("\n" + "Digite o código do produto que você irá repor. ");
             Scanner alterarItemEstoque = new Scanner(System.in);
             itemQueSeraAdicionado = alterarItemEstoque.nextInt();
+            if (itemQueSeraAdicionado != 1 && itemQueSeraAdicionado != 2 && itemQueSeraAdicionado != 3 && itemQueSeraAdicionado != 4 && itemQueSeraAdicionado != 5) {
+                System.out.println("Opção inválida. Favor digitar o número que antecede o produto. Exemplo: para escolher Café, digite 1");
+            }
+            else{
+                itemEscolhido =  itemEstoque.selecionarItemParaAdicionar(itemQueSeraAdicionado);
+            }
+
+
         }
-
-        if (itemQueSeraAdicionado != 1 && itemQueSeraAdicionado != 2 && itemQueSeraAdicionado != 3 && itemQueSeraAdicionado != 4 && itemQueSeraAdicionado != 5) {
-            System.out.println("Opção inválida. Favor digitar o número que antecede o produto. Exemplo: para escolher Café, digite 1");
-        }
-//
-//        else {
-//            itemEscolhido = itemEstoque.selecionarItemParaAdicionar(itemQueSeraAdicionado);
-//            System.out.println(ingrediente.nomeIngrediente);
-//        }
-
-
     }
+
+    int valorAdicionado = 0;
+    public void adicionaItemEstoque() {
+
+        System.out.println("\n" + "Você selecionou o " + itemEscolhido.nomeIngrediente + "\n" + "Digite o número de porções que deseja adicionar");
+        Scanner adicionaEstoque = new Scanner(System.in);
+        valorAdicionado = adicionaEstoque.nextInt();
+
+        itemEscolhido.porcaoIngrediente = itemEscolhido.porcaoIngrediente + valorAdicionado;
+
+        System.out.println("A nova quantidade total de " + itemEscolhido.nomeIngrediente + " é de " + itemEscolhido.porcaoIngrediente);
+    }
+    
 }

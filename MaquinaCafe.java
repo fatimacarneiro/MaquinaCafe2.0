@@ -21,10 +21,11 @@ public class MaquinaCafe {
             Scanner pegaSenha = new Scanner(System.in);
             senha = pegaSenha.nextInt();
 
-            if (senha == 1234567) {
+            if (senha == 123) {
                 estoque.mostraEstoque();
                 estoque.desejaAlterarEstoque();
                 estoque.adicionarEstoque();
+                estoque.adicionaItemEstoque();
 
             } else {
                 System.out.println("\n" + "Senha incorreta! Redirecionando usuário para Menu de compras");
